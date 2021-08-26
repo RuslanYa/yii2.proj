@@ -13,9 +13,9 @@ use yii\helpers\Url;
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Category</h2>
+						<h2>Категории</h2>
                         <ul class="catalog category-products"><!--/category-products-->
-                            <?= MenuWidget::widget(['tpl' => 'menu']); ?>
+                            <?php echo MenuWidget::widget(['tpl' => 'menu']); ?>
                         </ul>
 
                         <!--brands_products-->
@@ -64,8 +64,8 @@ $gallery = $product->getImages();
 							<div class="view-product">
 <!--								<img src="/images/product-details/1.jpg" alt="" />-->
 
-                                <?php echo Html::img($mainImg->getUrl(), ['alt'=>$product->name])?>
-								<h3>ZOOM</h3>
+                                <?php echo Html::img($mainImg->getUrl('250x250'), ['alt'=>$product->name])?>
+								<h3>Увеличить</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 
@@ -97,29 +97,29 @@ $gallery = $product->getImages();
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
                                 <?php if ($product->new) :?>
-                                    <?= Html::img("@web/images/home/new.png", ['alt'=>'Новинка', 'class'=>'newarrival']) ?>
+                                    <?php echo Html::img("@web/images/home/new.png", ['alt'=>'Новинка', 'class'=>'newarrival']) ?>
                                 <?php endif; ?>
                                 <?php if ($product->sale) :?>
-                                    <?= Html::img("@web/images/home/sale.png", ['alt'=>'Распродажа', 'class'=>'newarrival']) ?>
+                                    <?php echo Html::img("@web/images/home/sale.png", ['alt'=>'Распродажа', 'class'=>'newarrival']) ?>
                                 <?php endif; ?>
 
-								<h2><?= $product->name ?></h2>
+								<h2><?php echo $product->name ?></h2>
 								<p>Web ID: 1089772</p>
 								<img src="/images/product-details/rating.png" alt="" />
 								<span>
-									<span>US $<?= $product->price?></span>
-									<label>Quantity:</label>
+									<span>US $<?php echo $product->price?></span>
+									<label>Количество:</label>
 									<input type="text" value="1" id="qty" />
-									<a href="<?= Url::to(['cart/add', 'id'=> $product->id])?>" data-id="<?= $product->id ?>" type="button" class="btn btn-fefault cart add-to-cart ">
+									<a href="<?php echo Url::to(['cart/add', 'id'=> $product->id])?>" data-id="<?php echo $product->id ?>" type="button" class="btn btn-fefault cart add-to-cart ">
 										<i class="fa fa-shopping-cart"></i>
-                                    Add to cart
+                                    В корзину
                                     </a>
 								</span>
-								<p><b>Availability:</b> In Stock</p>
-								<p><b>Condition:</b> New</p>
-								<p><b>Brand:</b> <a href="<?= Url::to(['category/view', 'id'=>$product->category->id])?>"><?=$product->category->name?></a></p>
+								<p><b>В наличии:</b> In Stock</p>
+								<p><b>Состояние:</b> New</p>
+								<p><b>Бренд:</b> <a href="<?php echo Url::to(['category/view', 'id'=>$product->category->id])?>"><?php echo$product->category->name?></a></p>
 								<a href=""><img src="/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
-							    <?= $product->content?>
+							    <?php echo $product->content?>
                             </div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->
@@ -143,7 +143,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery1.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -155,7 +155,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery2.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -167,7 +167,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery3.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -179,7 +179,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery4.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -194,7 +194,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery1.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -206,7 +206,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery3.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -218,7 +218,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery2.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -230,7 +230,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery4.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -245,7 +245,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery1.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -257,7 +257,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery2.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -269,7 +269,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery3.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -281,7 +281,7 @@ $gallery = $product->getImages();
 <!--												<img src="/images/home/gallery4.jpg" alt="" />-->
 <!--												<h2>$56</h2>-->
 <!--												<p>Easy Polo Black Edition</p>-->
-<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>-->
+<!--												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>-->
 <!--											</div>-->
 <!--										</div>-->
 <!--									</div>-->
@@ -316,7 +316,7 @@ $gallery = $product->getImages();
 <!--					</div>-->
 
 					<div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">recommended items</h2>
+						<h2 class="title text-center">Рекомендуемые товары</h2>
 
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
@@ -331,10 +331,10 @@ $gallery = $product->getImages();
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-                                                    <?= Html::img("@web/images/products/{$hit->img}", ['alt' => $hit->name]) ?>
-													<h2>$<?= $product->price ?></h2>
-													<p><a href="<?=Url::to(['product/view', 'id'=> $hit->id]); ?>"><?= $product->name ?></a></p>
-													<button type="button" class="btn btn-default add-to-cart" data-id="<?= $product->id ?>"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                    <?php echo Html::img("@web/images/products/{$hit->img}", ['alt' => $hit->name]) ?>
+													<h2>$<?php echo $product->price ?></h2>
+													<p><a href="<?php echo Url::to(['product/view', 'id'=> $hit->id]); ?>"><?php echo $product->name ?></a></p>
+													<button type="button" class="btn btn-default add-to-cart" data-id="<?php echo $product->id ?>"><i class="fa fa-shopping-cart"></i>В корзину</button>
 												</div>
 											</div>
 										</div>
@@ -355,7 +355,7 @@ $gallery = $product->getImages();
 													<img src="/images/home/recommend1.jpg" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>
 												</div>
 											</div>
 										</div>
@@ -367,7 +367,7 @@ $gallery = $product->getImages();
 													<img src="/images/home/recommend2.jpg" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>
 												</div>
 											</div>
 										</div>
@@ -379,7 +379,7 @@ $gallery = $product->getImages();
 													<img src="/images/home/recommend3.jpg" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</button>
 												</div>
 											</div>
 										</div>

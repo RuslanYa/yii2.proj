@@ -13,9 +13,17 @@ class CategoryController extends AppController
 {
     public function  actionIndex()
     {
-        $hits = Product::find()->where(['hit' => '1'])->limit(6)->all();
+        // $hits = Product::find()->where(['hit' => '1'])->limit(6)->all();
         $this->setMeta('E-SHOPER');
-        return $this->render('index', compact('hits'));
+
+        $query = Product::find();
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 6,  'forcePageParam' => false, 'pageSizeParam' => false]);
+        $hits = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('index', compact('hits', 'pages'));
     }
 
     public function actionView($id)
@@ -24,7 +32,6 @@ class CategoryController extends AppController
         if ($category === null) { // item does not exist
             throw new HttpException(404, 'Такой категории нет.');
         }
-//        $products = Product::find()->where(['category_id'=>$id])->all();
         $query = Product::find()->where(['category_id'=>$id]);
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();

@@ -107,8 +107,11 @@ AppAsset::register($this);
 <?php endif; ?>
 <!--								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
 <!--								<li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>-->
-								<li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="<?=Url::to(['/admin']) ?>"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+								<?php if(Yii::$app->user->isGuest): ?>
+									<li><a href="<?=Url::to(['/admin']) ?>"><i class="fa fa-lock"></i> Войти</a></li>
+								<?php endif; ?>
+								
 							</ul>
 						</div>
 					</div>
@@ -130,14 +133,16 @@ AppAsset::register($this);
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="<?= Url::home()?>" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+								<li><a href="<?= Url::home()?>" class="active">Главная</a></li>
+								<li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
 <!--                                        <li><a href="#">Products</a></li>-->
 <!--										<li><a href="#">Product Details</a></li> -->
-										<li><a href="#" onclick="return getCart()">Cart</a></li>
+										<li><a href="#" onclick="return getCart()">Корзнина</a></li>
 <!--										<li><a href="#">Cart</a></li>-->
-										<li><a href="<?=Url::to(['/admin']) ?>">Login</a></li>
+										<?php if(Yii::$app->user->isGuest): ?>
+											<li><a href="<?=Url::to(['/admin']) ?>">Войти</a></li>
+										<?php endif; ?>
                                     </ul>
                                 </li> 
 <!--								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>-->

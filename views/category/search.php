@@ -17,13 +17,13 @@ use yii\widgets\LinkPager;
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Category</h2>
+                    <h2>Категории</h2>
 
                     <ul class="catalog category-products">
                         <?= MenuWidget::widget(['tpl' => 'menu']); ?>
                     </ul>
-
-                    <div class="brands_products"><!--brands_products-->
+                    <!--brands_products-->
+                    <!-- <div class="brands_products">
                         <h2>Brands</h2>
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
@@ -36,7 +36,8 @@ use yii\widgets\LinkPager;
                                 <li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
                             </ul>
                         </div>
-                    </div><!--/brands_products-->
+                    </div> -->
+                    <!--/brands_products-->
 
                     <div class="price-range"><!--price-range-->
                         <h2>Price Range</h2>
@@ -63,7 +64,7 @@ use yii\widgets\LinkPager;
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <?= Html::img("@web/images/products/{$product->img}", ['alt' => $product->name]) ?>
+                                            <?= Html::img("{$product->getImage()->getUrl('250x250')}", ['alt' => $product->name]) ?>
                                             <h2>$<?= $product->price ?></h2>
                                             <p> <a href="<?=Url::to(['product/view', 'id'=> $product->id]); ?>"><?= $product->name ?></a></p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -75,12 +76,12 @@ use yii\widgets\LinkPager;
                                             <?= Html::img("@web/images/home/sale.png", ['alt'=>'Распродажа', 'class'=>'new']) ?>
                                         <?php endif; ?>
                                     </div>
-                                    <div class="choose">
+                                    <!-- <div class="choose">
                                         <ul class="nav nav-pills nav-justified">
                                             <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
                                             <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <?php $i++ ?>

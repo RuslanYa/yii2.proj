@@ -17,7 +17,7 @@ use yii\widgets\LinkPager;
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Category</h2>
+                    <h2>Категории</h2>
 
                     <ul class="catalog category-products">
                         <?= MenuWidget::widget(['tpl' => 'menu']); ?>
@@ -67,7 +67,7 @@ use yii\widgets\LinkPager;
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <?= Html::img("@web/images/products/{$product->img}", ['alt' => $product->name]) ?>
+                                    <?= Html::img("{$product->getImage()->getUrl('250x250')}", ['alt' => $product->name]) ?>
                                     <h2>$<?= $product->price ?></h2>
                                     <p> <a href="<?=Url::to(['product/view', 'id'=> $product->id]); ?>"><?= $product->name ?></a></p>
                                     <a href="#" data-id="<?= $product->id ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

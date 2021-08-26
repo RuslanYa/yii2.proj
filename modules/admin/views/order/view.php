@@ -17,8 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1>Простмотр заказа №<?= $model->id ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -40,7 +40,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' =>!$model->status ? '<span class="text-danger">Активен</span>' : '<span class="text-success">Завершен</span>',
                 'format' => 'html',
             ],
-            'status',
             'name',
             'email:email',
             'phone',

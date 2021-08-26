@@ -28,6 +28,26 @@
 			});
 		});
 
+
+		$('#cart-page').on('click', '.del-item', function () {
+			var id = $(this).data('id');
+			$.ajax({
+				url: '/cart/del-item',
+				data: {id: id},
+				type: 'GET',
+				success: function(res){
+					if(!res) alert('Ошибка!');
+					$('#cart-page').html(res);
+					if(res.indexOf("Корзина")) location.reload();
+
+				},
+				error: function(){
+					alert('Ошибка!');
+				}
+			});
+		});
+
+
  		function getCart() {
 			$.ajax({
 				url: '/cart/show',

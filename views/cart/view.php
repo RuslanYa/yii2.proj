@@ -4,6 +4,7 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 ?>
 
+<div class="container">
 <?php if( Yii::$app->session->hasFlash('success') ): ?>
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -18,7 +19,7 @@ use yii\widgets\ActiveForm;
     </div>
 <?php endif;?>
 <?php if (!empty($session['cart'])): ?>
-    <div class="table-responsive">
+    <div class="table-responsive"  id="cart-page">
         <table class="table table-hover teble-striped">
             <thead>
             <tr>
@@ -64,3 +65,4 @@ use yii\widgets\ActiveForm;
     <h3>Корзина пуста</h3>
 <?php endif; ?>
 
+</div>

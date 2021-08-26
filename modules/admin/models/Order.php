@@ -58,8 +58,8 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             'id' => '№ заказа',
-//            'created_at' => 'Дата создания',
-//            'updated_at' => 'Дата изменения',
+           'created_at' => 'Дата создания',
+           'updated_at' => 'Дата изменения',
             'qty' => 'Кол-во',
             'sum' => 'Сумма',
             'status' => 'Статус',

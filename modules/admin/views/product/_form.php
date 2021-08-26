@@ -49,7 +49,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'image')->fileInput() ?>
 
-    <?= $form->field($model, 'image')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
+    <?= $form->field($model, 'gallery[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
 
 
 
@@ -60,7 +60,7 @@ mihaildev\elfinder\Assets::noConflict($this);
     <?= $form->field($model, 'sale')->checkbox([ '0', '1', ]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
