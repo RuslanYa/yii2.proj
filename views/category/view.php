@@ -20,7 +20,7 @@ use yii\widgets\LinkPager;
                     <h2>Категории</h2>
 
                     <ul class="catalog category-products">
-                        <?= MenuWidget::widget(['tpl' => 'menu']); ?>
+                        <?php echo MenuWidget::widget(['tpl' => 'menu']); ?>
                     </ul>
 
                     <!--brands_products-->
@@ -41,13 +41,14 @@ use yii\widgets\LinkPager;
                     <!--/brands_products-->
 
                     <!--price-range-->
-<!--                    <div class="price-range">-->
-<!--                        <h2>Price Range</h2>-->
-<!--                        <div class="well">-->
-<!--                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />-->
-<!--                            <b>$ 0</b> <b class="pull-right">$ 600</b>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div class="price-range">
+                       <h2>Диапазон цен</h2>
+                       <div class="well">
+                           <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+                           <b>$ 0</b> <b class="pull-right">$ 600</b>
+                       </div>
+                    </div>
+                    <div> <a class="btn btn-fefault cart " onclick="getPrice()" style="margin: center" >Применить фильтр</a> </div>
                     <!--/price-range-->
 
                     <div class="shipping text-center"><!--shipping-->
@@ -59,24 +60,28 @@ use yii\widgets\LinkPager;
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-
-                    <h2 class="title text-center"><?= $category->name ?></h2>
+                
+                
+                    <h2 class="title text-center " ><?php echo $category->name ?></h2>
+                <div class="category-id dump" data-id="<?php echo $category->id ?>">
                     <?php if (!empty($products)): ?>
                     <?php $i = 0 ;foreach ($products as $product): ?>
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <?= Html::img("{$product->getImage()->getUrl('250x250')}", ['alt' => $product->name]) ?>
-                                    <h2>$<?= $product->price ?></h2>
-                                    <p> <a href="<?=Url::to(['product/view', 'id'=> $product->id]); ?>"><?= $product->name ?></a></p>
-                                    <a href="#" data-id="<?= $product->id ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <?php echo Html::img("{$product->getImage()->getUrl('250x250')}", ['alt' => $product->name]) ?>
+
+                                
+                                    <h2>$<?php echo $product->price ?></h2>
+                                    <p> <a href="<?php echo Url::to(['product/view', 'id'=> $product->id]); ?>"><?php echo $product->name ?></a></p>
+                                    <a href="#" data-id="<?php echo $product->id ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                 </div>
                                 <?php if ($product->new) :?>
-                                    <?= Html::img("@web/images/home/new.png", ['alt'=>'Новинка', 'class'=>'new']) ?>
+                                    <?php echo Html::img("@web/images/home/new.png", ['alt'=>'Новинка', 'class'=>'new']) ?>
                                 <?php endif; ?>
                                 <?php if ($product->sale) :?>
-                                    <?= Html::img("@web/images/home/sale.png", ['alt'=>'Распродажа', 'class'=>'new']) ?>
+                                    <?php echo Html::img("@web/images/home/sale.png", ['alt'=>'Распродажа', 'class'=>'new']) ?>
                                 <?php endif; ?>
                             </div>
 <!--                            <div class="choose">-->
@@ -102,7 +107,7 @@ use yii\widgets\LinkPager;
 
                     <?php endif; ?>
 
-
+                </div>
                 </div><!--features_items-->
             </div>
         </div>

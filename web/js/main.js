@@ -123,3 +123,68 @@ $(document).ready(function(){
 		});
 	});
 });
+
+
+/**
+ * Лайтбокс
+ * https://www.jqueryscript.net/lightbox/image-viewer-smooth-animations.html
+ */
+
+ $(".zoom-button").click(function(){
+	
+	$("#full-image").attr("src", $(".images img").attr("src"));
+	$('#image-viewer').show();
+  });
+  
+  $("#image-viewer .close").click(function(){
+	$('#image-viewer').hide();
+  });
+  
+  /**
+   * Carusel inner click
+   */
+
+$(" #similar-product .carousel-inner a").on("click", function(e){
+	e.preventDefault();
+	let id = $(this).data('id'); 
+	let idimage = $(this).data('idimage'); 
+	$.ajax({
+		url:'/product/get-full-image',
+		data: {id: id, idimage: idimage},
+		type:'GET',
+		success: function(res){
+		
+			$(".view-product img").attr("src",  res ) ;
+
+	   },
+		error: function(){
+			alert("error");
+		}
+	})
+	
+});
+
+function getPrice(){
+	// let priceVal = $(".slider").slider(options);
+	let priceVal = $(".tooltip-inner").text();
+	let num =  priceVal.split(' : ');
+	let id = $('.category-id').data('id');
+	// let priceVal = slider.getValue
+	// alert( num[0] );
+
+	$.ajax({
+		url:'/category/filter',
+		data:{low: num[0], hight: num[1], id: id},
+		method: 'GET',
+		success: function(res){
+			$(res).replaceAll(".dump");
+		},
+		error: function(){
+
+		}
+
+	})
+
+}
+
+

@@ -8,6 +8,7 @@ use app\models\Product;
 use Yii;
 use yii\data\Pagination;
 use \yii\web\HttpException;
+use yii\helpers\ArrayHelper;
 
 class CategoryController extends AppController
 {
@@ -49,5 +50,29 @@ class CategoryController extends AppController
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
         return $this->render('search', compact('products', 'pages', 'q'));
+    }
+
+    public function actionFilter(){
+
+        $id = Yii::$app->request->get('id');
+
+        $category = Category::findOne($id);
+        if ($category === null) { // item does not exist
+            throw new HttpException(404, 'Такой категории нет.');
+        }
+
+        $low = Yii::$app->request->get('low');
+        $hight = Yii::$app->request->get('hight');
+
+
+
+        $query = Product::find()->where(['category_id'=>$id])    
+                                ->andWhere(['between', 'price', $low, $hight]);
+                                
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $products = $query->offset($pages->offset)->limit($pages->limit)->all();
+
+        $this->layout = false;
+        return $this->render('filter-view', compact('products', 'pages', 'category'));
     }
 }

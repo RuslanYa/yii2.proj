@@ -35,13 +35,13 @@ use yii\helpers\Url;
 <!--						</div>-->
                         <!--/brands_products-->
                         <!--price-range-->
-<!--						<div class="price-range">-->
-<!--							<h2>Price Range</h2>-->
-<!--							<div class="well">-->
-<!--								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />-->
-<!--								 <b>$ 0</b> <b class="pull-right">$ 600</b>-->
-<!--							</div>-->
-<!--						</div>-->
+						<!-- <div class="price-range">
+							<h2>Price Range</h2>
+							<div class="well">
+								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+								 <b>$ 0</b> <b class="pull-right">$ 600</b>
+							</div>
+						</div> -->
                         <!--/price-range-->
 
 						<div class="shipping text-center"><!--shipping-->
@@ -61,11 +61,21 @@ $gallery = $product->getImages();
 				<div class="col-sm-9 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
-							<div class="view-product">
+							<div class="view-product images">
 <!--								<img src="/images/product-details/1.jpg" alt="" />-->
 
                                 <?php echo Html::img($mainImg->getUrl('250x250'), ['alt'=>$product->name])?>
-								<h3>Увеличить</h3>
+
+								<div id="image-viewer">
+									<span class="close">&times;</span>
+									<img class="modal-content-view modal-content" id="full-image">
+								</div>
+
+								<!-- <h3 class="zoom-button btn btn-fefault" type="button">Увеличить</h3> -->
+
+								<a href="#" type="button" data-id="<?php echo $product->id; ?>" class="btn btn-fefault cart zoom-button" style="float:right;">
+								Увеличить
+                                    </a>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 
@@ -76,7 +86,7 @@ $gallery = $product->getImages();
 										    <?php if ($i % 3 == 0):?>
                                               <div class="item <?php if($i == 0) echo ' active' ?>">
                                             <?php endif;?>
-										  <a href=""><?php echo Html::img($img->getUrl('84x85'), ['alt'=>''])?></a>
+										  <a href="" data-id="<?php echo $product->id; ?>" data-idimage="<?php echo  $i; ?>" ><?php echo Html::img($img->getUrl('84x85'), ['alt'=>''])?></a>
                                              <?php $i++ ;if ($i % 3 == 0 || $i == $count ):?>
                                               </div>
                                            <?php endif;?>
@@ -331,10 +341,13 @@ $gallery = $product->getImages();
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-                                                    <?php echo Html::img("@web/images/products/{$hit->img}", ['alt' => $hit->name]) ?>
-													<h2>$<?php echo $product->price ?></h2>
-													<p><a href="<?php echo Url::to(['product/view', 'id'=> $hit->id]); ?>"><?php echo $product->name ?></a></p>
-													<button type="button" class="btn btn-default add-to-cart" data-id="<?php echo $product->id ?>"><i class="fa fa-shopping-cart"></i>В корзину</button>
+                                                    <?php
+													//  echo Html::img("@web/images/products/{$hit->img}", ['alt' => $hit->name]) 
+													?>
+													<?php echo Html::img($hit->getImage()->getUrl('250x250'), ['alt'=>$hit->name]) ?>
+													<h2>$<?php echo $hit->price ?></h2>
+													<p><a href="<?php echo Url::to(['product/view', 'id'=> $hit->id]); ?>"><?php echo $hit->name ?></a></p>
+													<button type="button" class="btn btn-default add-to-cart" data-id="<?php echo $hit->id ?>"><i class="fa fa-shopping-cart"></i>В корзину</button>
 												</div>
 											</div>
 										</div>

@@ -82,7 +82,7 @@ use yii\widgets\LinkPager;
                     <h2>Категории</h2>
 
                     <ul class="catalog category-products">
-                        <?= MenuWidget::widget(['tpl' => 'menu']); ?>
+                        <?php echo  MenuWidget::widget(['tpl' => 'menu']); ?>
                     </ul>
 
 
@@ -129,17 +129,17 @@ use yii\widgets\LinkPager;
                             <div class="single-products">
                                 <div class="productinfo text-center">
 <!--                                    <img src="/images/home/product1.jpg" alt="" />-->
-                                    <?= Html::img("{$hit->getImage()->getUrl('250x250')}", ['alt' => $hit->name]) ?>
-                                    <h2>$<?= $hit->price ?></h2>
-                                    <p><a href="<?=Url::to(['product/view', 'id'=> $hit->id]); ?>"><?= $hit->name ?></a></p>
-                                    <a href="<?= Url::to(['cart/add', 'id' => $hit->id])?>" data-id="<?=$hit->id ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                    <?php echo  Html::img("{$hit->getImage()->getUrl('250x250')}", ['alt' => $hit->name]) ?>
+                                    <h2>$<?php echo  $hit->price ?></h2>
+                                    <p><a href="<?php echo Url::to(['product/view', 'id'=> $hit->id]); ?>"><?php echo  $hit->name ?></a></p>
+                                    <a href="<?php echo  Url::to(['cart/add', 'id' => $hit->id])?>" data-id="<?php echo $hit->id ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                 </div>
 
                                 <?php if ($hit->new) :?>
-                                    <?= Html::img("@web/images/home/new.png", ['alt'=>'Новинка', 'class'=>'new']) ?>
+                                    <?php echo  Html::img("@web/images/home/new.png", ['alt'=>'Новинка', 'class'=>'new']) ?>
                                 <?php endif; ?>
                                 <?php if ($hit->sale) :?>
-                                    <?= Html::img("@web/images/home/sale.png", ['alt'=>'Распродажа', 'class'=>'new']) ?>
+                                    <?php echo  Html::img("@web/images/home/sale.png", ['alt'=>'Распродажа', 'class'=>'new']) ?>
                                 <?php endif; ?>
 <!--                                <img src="/images/home/new.png" class="new">-->
                             </div>

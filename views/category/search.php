@@ -20,7 +20,7 @@ use yii\widgets\LinkPager;
                     <h2>Категории</h2>
 
                     <ul class="catalog category-products">
-                        <?= MenuWidget::widget(['tpl' => 'menu']); ?>
+                        <?php echo  MenuWidget::widget(['tpl' => 'menu']); ?>
                     </ul>
                     <!--brands_products-->
                     <!-- <div class="brands_products">
@@ -57,23 +57,23 @@ use yii\widgets\LinkPager;
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
 
-                    <h2 class="title text-center">Поиск по запросу: <?= Html::encode($q) ?></h2>
+                    <h2 class="title text-center">Поиск по запросу: <?php echo  Html::encode($q) ?></h2>
                     <?php if (!empty($products)): ?>
                         <?php $i = 0 ;foreach ($products as $product): ?>
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <?= Html::img("{$product->getImage()->getUrl('250x250')}", ['alt' => $product->name]) ?>
-                                            <h2>$<?= $product->price ?></h2>
-                                            <p> <a href="<?=Url::to(['product/view', 'id'=> $product->id]); ?>"><?= $product->name ?></a></p>
+                                            <?php echo  Html::img("{$product->getImage()->getUrl('250x250')}", ['alt' => $product->name]) ?>
+                                            <h2>$<?php echo  $product->price ?></h2>
+                                            <p> <a href="<?php echo Url::to(['product/view', 'id'=> $product->id]); ?>"><?php echo  $product->name ?></a></p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         <?php if ($product->new) :?>
-                                            <?= Html::img("@web/images/home/new.png", ['alt'=>'Новинка', 'class'=>'new']) ?>
+                                            <?php echo  Html::img("@web/images/home/new.png", ['alt'=>'Новинка', 'class'=>'new']) ?>
                                         <?php endif; ?>
                                         <?php if ($product->sale) :?>
-                                            <?= Html::img("@web/images/home/sale.png", ['alt'=>'Распродажа', 'class'=>'new']) ?>
+                                            <?php echo  Html::img("@web/images/home/sale.png", ['alt'=>'Распродажа', 'class'=>'new']) ?>
                                         <?php endif; ?>
                                     </div>
                                     <!-- <div class="choose">

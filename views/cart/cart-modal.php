@@ -15,20 +15,20 @@ if (!empty($session['cart'])): ?>
         <tbody>
             <?php foreach ($session['cart'] as $id =>$item): ?>
                 <tr>
-                    <td><?= Html::img($item['img'], ['alt'=> $item['name'], 'height'=>50]) ?></td>
-                    <td><?= $item['name'] ?></td>
-                    <td><?= $item['qty'] ?></td>
-                    <td><?= $item['price'] ?></td>
-                    <td><span data-id="<?= $id ?>" class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></span></td>
+                    <td><?php echo  Html::img($item['img'], ['alt'=> $item['name'], 'height'=>50]) ?></td>
+                    <td><?php echo  $item['name'] ?></td>
+                    <td><?php echo  $item['qty'] ?></td>
+                    <td><?php echo  $item['price'] ?></td>
+                    <td><span data-id="<?php echo  $id ?>" class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></span></td>
                 </tr>
             <?php endforeach; ?>
                 <tr>
                     <td colspan="4">Итого:</td>
-                    <td><?= $session['cart.qty']?></td>
+                    <td><?php echo  $session['cart.qty']?></td>
                 </tr>
             <tr>
                 <td colspan="4">На сумму:</td>
-                <td><?= $session['cart.sum']?></td>
+                <td><?php echo  $session['cart.sum']?></td>
             </tr>
         </tbody>
     </table>

@@ -16,13 +16,13 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?php echo  Yii::$app->language ?>">
 <head>
-     <meta charset="<?= Yii::$app->charset ?>">
+     <meta charset="<?php echo  Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
-   <title><?= Html::encode($this->title) ?></title>
+   <title><?php echo  Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 
     <!--[if lt IE 9]>
@@ -72,7 +72,7 @@ AppAsset::register($this);
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-                            <a href="<?= Url::home()?>"><?= Html::img('@web/images/home/logo.png', ['alt' => 'E-SHOPER']); ?></a>
+                            <a href="<?php echo  Url::home()?>"><?php echo  Html::img('@web/images/home/logo.png', ['alt' => 'E-SHOPER']); ?></a>
 						</div>
 <!--						<div class="btn-group pull-right">-->
 <!--							<div class="btn-group">-->
@@ -102,14 +102,14 @@ AppAsset::register($this);
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 <?php if (!Yii::$app->user->isGuest): ?>
-	<li><a href="<?=Url::to(['/site/logout/'])?>"><i class="fa fa-user"></i> <?=Yii::$app->user->identity['username']?>(Выход)</a></li>
-    <li><a href="<?=Url::to(['/admin'])?>"><i class="fa fa-user"></i>Кабинет админа</a></li>
+	<li><a href="<?php echo Url::to(['/site/logout/'])?>"><i class="fa fa-user"></i> <?php echo Yii::$app->user->identity['username']?>(Выход)</a></li>
+    <li><a href="<?php echo Url::to(['/admin'])?>"><i class="fa fa-user"></i>Кабинет админа</a></li>
 <?php endif; ?>
 <!--								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
 <!--								<li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>-->
 								<li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
 								<?php if(Yii::$app->user->isGuest): ?>
-									<li><a href="<?=Url::to(['/admin']) ?>"><i class="fa fa-lock"></i> Войти</a></li>
+									<li><a href="<?php echo Url::to(['/admin']) ?>"><i class="fa fa-lock"></i> Войти</a></li>
 								<?php endif; ?>
 								
 							</ul>
@@ -133,7 +133,7 @@ AppAsset::register($this);
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="<?= Url::home()?>" class="active">Главная</a></li>
+								<li><a href="<?php echo  Url::home()?>" class="active">Главная</a></li>
 								<li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
 <!--                                        <li><a href="#">Products</a></li>-->
@@ -141,7 +141,7 @@ AppAsset::register($this);
 										<li><a href="#" onclick="return getCart()">Корзнина</a></li>
 <!--										<li><a href="#">Cart</a></li>-->
 										<?php if(Yii::$app->user->isGuest): ?>
-											<li><a href="<?=Url::to(['/admin']) ?>">Войти</a></li>
+											<li><a href="<?php echo Url::to(['/admin']) ?>">Войти</a></li>
 										<?php endif; ?>
                                     </ul>
                                 </li> 
@@ -158,7 +158,7 @@ AppAsset::register($this);
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-                            <form action="<?=Url::to(['category/search']) ?>" method="get">
+                            <form action="<?php echo Url::to(['category/search']) ?>" method="get">
 							    <input type="text" placeholder="Search" name="q"/>
                             </form>
 						</div>
@@ -168,7 +168,7 @@ AppAsset::register($this);
 		</div><!--/header-bottom-->
 	</header><!--/header-->
 	
-	<?= $content ?>
+	<?php echo  $content ?>
 	
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">

@@ -374,6 +374,7 @@
 		max: 10,
 		step: 1,
 		orientation: 'horizontal',
+		// orientation: 'vertical',
 		value: 5,
 		selection: 'before',
 		tooltip: 'show',
@@ -384,5 +385,6 @@
 	};
 
 	$.fn.slider.Constructor = Slider;
+
 
 }( window.jQuery );
