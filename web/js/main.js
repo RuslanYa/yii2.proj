@@ -78,7 +78,7 @@
 
 
 
-$('.add-to-cart').on('click', function (e) {
+$('.features_items').on('click', '.add-to-cart', function (e) {
 	e.preventDefault();
 	var id = $(this).data('id'),
 		qty = $('#qty').val();
